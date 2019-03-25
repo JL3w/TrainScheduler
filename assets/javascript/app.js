@@ -11,7 +11,7 @@
 var database = firebase.database();
 var provider = new firebase.auth.GoogleAuthProvider();
 //$("#submit").on("click", function(event) {
-    
+    event.preventDefault();
     firebase.auth().signInWithRedirect(provider);
     firebase.auth().getRedirectResult().then(function(result) {
         if (result.credential) {
