@@ -16,7 +16,8 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
-    console.log(user);
+    console.log(result.user);
+
     // ...
   }).catch(function(error) {
     // Handle Errors here.
@@ -27,4 +28,20 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
     // The firebase.auth.AuthCredential type that was used.
     var credential = error.credential;
     // ...
+  });
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // User is signed in.
+      var displayName = user.displayName;
+      var email = user.email;
+      var emailVerified = user.emailVerified;
+      var photoURL = user.photoURL;
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      var providerData = user.providerData;
+      // ...
+    } else {
+      // User is signed out.
+      // ...
+    }
   });
