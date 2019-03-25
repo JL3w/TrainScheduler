@@ -26,6 +26,3 @@ firebase.auth().signInWithPopup(provider).then(function(result) {
     var credential = error.credential;
     // ...
   });
-
-
-
