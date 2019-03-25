@@ -73,7 +73,7 @@ $(document).ready(function(){
     var newRow = $("<tr>").append(
         $("<td>").text(snap.name),
         $("<td>").text(snap.dest),
-        $("<td>").text(snap.freq),
+        $("<td>").text(snap.freq + " Min"),
         $("<td>").text(preNextTrain),
         $("<td>").text(minTilTrain)
     );
