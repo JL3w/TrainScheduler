@@ -1,4 +1,5 @@
-var config = {
+ // Initialize Firebase
+ var config = {
     apiKey: "AIzaSyD2IpQtH4Ip9Xh2c3xuSxd3C24xFIS2NnA",
     authDomain: "train-app-1171a.firebaseapp.com",
     databaseURL: "https://train-app-1171a.firebaseio.com",
@@ -6,6 +7,7 @@ var config = {
     storageBucket: "train-app-1171a.appspot.com",
     messagingSenderId: "1016489823423"
   };
+  firebase.initializeApp(config);
   firebase.initializeApp(config);
 var database = firebase.database();
 var provider = new firebase.auth.GoogleAuthProvider();
