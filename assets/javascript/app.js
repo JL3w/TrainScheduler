@@ -10,8 +10,8 @@
   firebase.initializeApp(config);
 var database = firebase.database();
 var provider = new firebase.auth.GoogleAuthProvider();
-$(".submit").on("click", function(event) {
-    event.preventDefault();
+//$("#submit").on("click", function(event) {
+    
     firebase.auth().signInWithRedirect(provider);
     firebase.auth().getRedirectResult().then(function(result) {
         if (result.credential) {
@@ -31,4 +31,4 @@ $(".submit").on("click", function(event) {
         var credential = error.credential;
         // ...
       });
-    });
+   // });
