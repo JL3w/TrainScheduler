@@ -59,5 +59,25 @@ $(document).ready(function(){
        $("#first-input").val("");
    });
 
-});
+   database.ref().on("child_added", function(childSnapshot) {
+    snap = childSnapshot.val();
+    console.log(snap);
+    var firstFirstTime = moment(snap.first, "HH:mm").subtract(1, "years");
+    var currentT = moment();
+    var diffTime = currentT.diff(moment(firstFirstTime), "minutes");
+    var tRemain = diffTime % snap.freq;
+    var minTilTrain = snap.freq - tRemain;
+    var nextTrain = currentT.add(minTilTrain, "minutes");
 
+    var newRow = $("<tr>").append(
+        $("<td>").text(snap.name),
+        $("<td>").text(snap.dest),
+        $("<td>").text(snap.freq),
+        $("<td>").text(nextTrain),
+        $("<td>").text(minTilTrain)
+    );
+
+    $("#sched > tbody").append(newRow);
+
+});
+});
