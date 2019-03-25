@@ -1,3 +1,4 @@
+$(document).ready(function(){
  // Initialize Firebase
  var config = {
     apiKey: "AIzaSyD2IpQtH4Ip9Xh2c3xuSxd3C24xFIS2NnA",
@@ -8,7 +9,7 @@
     messagingSenderId: "1016489823423"
   };
   firebase.initializeApp(config);
-var database = firebase.database();
+  var database = firebase.database();
 //var provider = new firebase.auth.GoogleAuthProvider();
 //$("#submit").on("click", function(event) {
 //    event.preventDefault();
@@ -33,10 +34,30 @@ var database = firebase.database();
     //   });
    // });
 
-   var tName;
-   var tDest;
-   var tFreq;
-   var tFirst;
 
-   
+
+   $("#add-train-btn").on("click", function() {
+       event.preventDefault();
+
+       tName = $("#name-input").val();
+       tDest = $("#dest-input").val();
+       tFreq = $("#freq-input").val();
+       tFirst = $("#first-input").val();
+
+       var newTrain = {
+           name: tName,
+           dest: tDest,
+           freq: tFreq,
+           first: tFirst
+       };
+
+       database.ref().push(newTrain);
+
+       $("#name-input").val("");
+       $("#dest-input").val("");
+       $("#freq-input").val("");
+       $("#first-input").val("");
+   });
+
+});
 
