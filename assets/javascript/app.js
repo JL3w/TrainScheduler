@@ -8,7 +8,6 @@
     messagingSenderId: "1016489823423"
   };
   firebase.initializeApp(config);
-  firebase.initializeApp(config);
 var database = firebase.database();
 var provider = new firebase.auth.GoogleAuthProvider();
 
