@@ -2,3 +2,10 @@
     width: 20%;
     display: inline-block;
 }
+#sched  tr:nth-child(even){
+    background: #F0F0F0;
+}
+
+#sched  tr:nth-child(odd){
+    background: #FFF;
+}

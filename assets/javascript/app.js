@@ -62,18 +62,19 @@ $(document).ready(function(){
    database.ref().on("child_added", function(childSnapshot) {
     snap = childSnapshot.val();
     console.log(snap);
+    
     var firstFirstTime = moment(snap.first, "HH:mm").subtract(1, "years");
-    var currentT = moment();
-    var diffTime = currentT.diff(moment(firstFirstTime), "minutes");
+    var diffTime = moment().diff(moment(firstFirstTime), "minutes");
     var tRemain = diffTime % snap.freq;
     var minTilTrain = snap.freq - tRemain;
-    var nextTrain = currentT.add(minTilTrain, "minutes");
+    var nextTrain = moment().add(minTilTrain, "minutes");
+    var preNextTrain = moment(nextTrain).format("MMM Do HH:mm");
 
     var newRow = $("<tr>").append(
         $("<td>").text(snap.name),
         $("<td>").text(snap.dest),
         $("<td>").text(snap.freq),
-        $("<td>").text(nextTrain),
+        $("<td>").text(preNextTrain),
         $("<td>").text(minTilTrain)
     );
 
